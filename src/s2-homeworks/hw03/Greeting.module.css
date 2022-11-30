@@ -20,6 +20,7 @@
     height: 36px;
     border: 1px solid #D1D1D1;
     border-radius: 5px;
+    padding: 10px;
 }
 
 .input:focus {
