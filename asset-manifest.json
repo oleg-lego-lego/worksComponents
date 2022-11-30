@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/worksComponents/static/css/main.eff06703.css",
-    "main.js": "/worksComponents/static/js/main.eeef0450.js",
+    "main.css": "/worksComponents/static/css/main.ab12dcad.css",
+    "main.js": "/worksComponents/static/js/main.9955726d.js",
     "static/js/787.66cb4309.chunk.js": "/worksComponents/static/js/787.66cb4309.chunk.js",
     "static/media/avatar.png": "/worksComponents/static/media/avatar.d947cb9d0d13765666b6.png",
+    "static/media/checked.svg": "/worksComponents/static/media/checked.b75ca55e8759862b4083.svg",
     "index.html": "/worksComponents/index.html",
-    "main.eff06703.css.map": "/worksComponents/static/css/main.eff06703.css.map",
-    "main.eeef0450.js.map": "/worksComponents/static/js/main.eeef0450.js.map",
+    "main.ab12dcad.css.map": "/worksComponents/static/css/main.ab12dcad.css.map",
+    "main.9955726d.js.map": "/worksComponents/static/js/main.9955726d.js.map",
     "787.66cb4309.chunk.js.map": "/worksComponents/static/js/787.66cb4309.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.eff06703.css",
-    "static/js/main.eeef0450.js"
+    "static/css/main.ab12dcad.css",
+    "static/js/main.9955726d.js"
   ]
 }
