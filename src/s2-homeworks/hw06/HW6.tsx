@@ -24,9 +24,10 @@ const HW6 = () => {
     }
 
     return (
-        <div id={'hw6'}>
-            <div className={s2.hwTitle}>Homework #6</div>
-
+        <div id={'hw6'} >
+            <div className={s2.hwTitle}>
+                <h3 className={s2.container}>Homework #6</h3>
+            </div>
             {/*демонстрация возможностей компоненты:*/}
             <div className={s2.hw}>
                 <div className={s.editableSpanContainer}>
