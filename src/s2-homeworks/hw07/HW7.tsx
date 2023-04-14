@@ -22,7 +22,9 @@ const HW7 = () => {
 
     return (
         <div id={'hw7'}>
-            <div className={s2.hwTitle}>Homework #7</div>
+            <div className={s2.hwTitle}>
+                <h3 className={s2.container}>Homework #7</h3>
+            </div>
 
             {/*демонстрация возможностей компонент:*/}
             <div className={s2.hw}>
