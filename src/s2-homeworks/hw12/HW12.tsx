@@ -11,8 +11,12 @@ import {changeThemeId} from './bll/themeReducer'
 * 3 - дописать тип и логику функции change
 * 4 - передать пропсы в SuperSelect
 * */
+type ThemesType = {
+    id: number
+    value: 'light' | 'blue' | 'dark'
+}
 
-const themes = [
+const themes: ThemesType[] = [
     {id: 1, value: 'light'},
     {id: 2, value: 'blue'},
     {id: 3, value: 'dark'},
@@ -22,7 +26,7 @@ const HW12 = () => {
     // взять ид темы из редакса
     const themeId = 1
 
-    const change = (id: any) => { // дописать функцию
+    const change = (id: number) => { // дописать функцию
 
     }
 
@@ -41,7 +45,6 @@ const HW12 = () => {
                     id={'hw12-select-theme'}
                     className={s.select}
                     // сделать переключение тем
-
                 />
             </div>
         </div>
