@@ -14,76 +14,108 @@ import errorUnknown from './images/error.svg'
 * 3 - сделать стили в соответствии с дизайном
 * */
 
+type ResponseType = {
+    errorText: string;
+    info: string;
+    yourBody: YourBodyType;
+    yourQuery: YourQueryType;
+};
+
+type YourBodyType = {
+    success: boolean;
+};
+
+type YourQueryType = {};
+
 const HW13 = () => {
-    const [code, setCode] = useState('')
-    const [text, setText] = useState('')
-    const [info, setInfo] = useState('')
-    const [image, setImage] = useState('')
+    const [code, setCode] = useState("");
+    const [text, setText] = useState("");
+    const [info, setInfo] = useState("");
+    const [image, setImage] = useState("");
 
     const send = (x?: boolean | null) => () => {
         const url =
             x === null
-                ? 'https://xxxxxx.ccc' // имитация запроса на не корректный адрес
-                : 'https://incubator-personal-page-back.herokuapp.com/api/3.0/homework/test'
+                ? "https://xxxxxx.ccc" // имитация запроса на не корректный адрес
+                : "https://samurai.it-incubator.io/api/3.0/homework/test";
+        // "https://incubator-personal-page-back.herokuapp.com/api/3.0/homework/test";
 
-        setCode('')
-        setImage('')
-        setText('')
-        setInfo('...loading')
+        setCode("");
+        setImage("");
+        setText("");
+        setInfo("...loading");
 
         axios
-            .post(url, {success: x})
+            .post<ResponseType>(url, { success: x })
             .then((res) => {
-                setCode('Код 200!')
-                setImage(success200)
-                // дописать
-
+                if (res.status === 200) {
+                    setCode("Код 200!");
+                    setImage(success200);
+                    setInfo(res.data.info);
+                    setText(res.data.errorText);
+                } else {
+                    return res
+                }
             })
             .catch((e) => {
-                // дописать
-
-            })
-    }
+                if (e.response.status === 500) {
+                    setCode("Ошибка 500!");
+                    setImage(error500);
+                    setInfo(e.response.data.info);
+                    setText(e.response.data.errorText);
+                }
+                if (e.response.status === 400) {
+                    setCode("Ошибка 400!");
+                    setImage(error400);
+                    setInfo(e.response.data.info);
+                    setText(e.response.data.errorText);
+                }
+                if (!e.response.data) {
+                    setImage(errorUnknown);
+                    setCode("Error!");
+                    setText(e.message);
+                    setInfo(e.name);
+                }
+            });
+    };
 
     return (
-        <div id={'hw13'}>
-            <div className={s2.hwTitle}>Homework #13</div>
+        <div id={"hw13"}>
+            <div id={'hw12-text'} className={s2.hwTitle}>
+                <h3 className={s2.container}>Homework #13</h3>
+            </div>
 
             <div className={s2.hw}>
                 <div className={s.buttonsContainer}>
                     <SuperButton
-                        id={'hw13-send-true'}
+                        id={"hw13-send-true"}
                         onClick={send(true)}
-                        xType={'secondary'}
-                        // дописать
-
+                        xType={"secondary"}
+                        disabled={info === "...loading"}
                     >
                         Send true
                     </SuperButton>
                     <SuperButton
-                        id={'hw13-send-false'}
+                        id={"hw13-send-false"}
                         onClick={send(false)}
-                        xType={'secondary'}
-                        // дописать
-
+                        xType={"secondary"}
+                        disabled={info === "...loading"}
                     >
                         Send false
                     </SuperButton>
                     <SuperButton
-                        id={'hw13-send-undefined'}
+                        id={"hw13-send-undefined"}
                         onClick={send(undefined)}
-                        xType={'secondary'}
-                        // дописать
-
+                        xType={"secondary"}
+                        disabled={info === "...loading"}
                     >
                         Send undefined
                     </SuperButton>
                     <SuperButton
-                        id={'hw13-send-null'}
+                        id={"hw13-send-null"}
                         onClick={send(null)} // имитация запроса на не корректный адрес
-                        xType={'secondary'}
-                        // дописать
-
+                        xType={"secondary"}
+                        disabled={info === "...loading"}
                     >
                         Send null
                     </SuperButton>
@@ -91,24 +123,24 @@ const HW13 = () => {
 
                 <div className={s.responseContainer}>
                     <div className={s.imageContainer}>
-                        {image && <img src={image} className={s.image} alt="status"/>}
+                        {image && <img src={image} className={s.image} alt='status' />}
                     </div>
 
                     <div className={s.textContainer}>
-                        <div id={'hw13-code'} className={s.code}>
+                        <div id={"hw13-code"} className={s.code}>
                             {code}
                         </div>
-                        <div id={'hw13-text'} className={s.text}>
+                        <div id={"hw13-text"} className={s.text}>
                             {text}
                         </div>
-                        <div id={'hw13-info'} className={s.info}>
+                        <div id={"hw13-info"} className={s.info}>
                             {info}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default HW13
